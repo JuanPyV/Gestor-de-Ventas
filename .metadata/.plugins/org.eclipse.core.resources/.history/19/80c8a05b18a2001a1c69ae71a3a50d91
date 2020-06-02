@@ -1,0 +1,461 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import java.awt.Choice;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class AddWindow {
+
+	private JFrame frmAddForm;
+	private JTextField regionTextField;
+	private JTextField countyTextField;
+	private JTextField dateTextField;
+	private JTextField shipDateTextField;
+	private JTextField unitsTextField;
+	private JTextField unitPriceTextField;
+	private JTextField unitCostTextField;
+	private JTextField revenueTextField;
+	private JTextField costTextField;
+	private JTextField profitTextField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddWindow window = new AddWindow();
+					window.frmAddForm.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AddWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmAddForm = new JFrame();
+		frmAddForm.getContentPane().setBackground(new Color(176, 224, 230));
+		frmAddForm.setIconImage(Toolkit.getDefaultToolkit().getImage("Sales.jpg"));
+		frmAddForm.setTitle("SEARCH FORM");
+		frmAddForm.setBounds(100, 100, 688, 524);
+
+		JLabel lblSearchForAn = new JLabel("ADD AN ITEM");
+		lblSearchForAn.setBackground(new Color(176, 224, 230));
+		lblSearchForAn.setForeground(new Color(139, 69, 19));
+		lblSearchForAn.setFont(new Font("Calibri", Font.BOLD, 25));
+		lblSearchForAn.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel regionLabel = new JLabel("Region:");
+		regionLabel.setForeground(new Color(139, 69, 19));
+		regionLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		regionLabel.setBackground(new Color(176, 224, 230));
+
+		regionTextField = new JTextField();
+		regionTextField.setColumns(10);
+
+		JLabel countryLabel = new JLabel("Country:");
+		countryLabel.setForeground(new Color(139, 69, 19));
+		countryLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		countryLabel.setBackground(new Color(176, 224, 230));
+
+		countyTextField = new JTextField();
+		countyTextField.setColumns(10);
+
+		JLabel lblItemType = new JLabel("Item Type:");
+		lblItemType.setForeground(new Color(139, 69, 19));
+		lblItemType.setBackground(new Color(176, 224, 230));
+		lblItemType.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		JLabel salesLabel = new JLabel("Sales Channel:");
+		salesLabel.setForeground(new Color(139, 69, 19));
+		salesLabel.setBackground(new Color(176, 224, 230));
+		salesLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		JLabel lblOrderPriority = new JLabel("Order Priority:");
+		lblOrderPriority.setForeground(new Color(139, 69, 19));
+		lblOrderPriority.setBackground(new Color(176, 224, 230));
+		lblOrderPriority.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		JLabel lblOrderDate = new JLabel("Order Date:");
+		lblOrderDate.setForeground(new Color(139, 69, 19));
+		lblOrderDate.setBackground(new Color(176, 224, 230));
+		lblOrderDate.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		dateTextField = new JTextField();
+		dateTextField.setColumns(10);
+
+		JLabel lblOrderId = new JLabel("Order ID:");
+		lblOrderId.setForeground(new Color(139, 69, 19));
+		lblOrderId.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		lblOrderId.setBackground(new Color(176, 224, 230));
+
+		JLabel shipLabel = new JLabel("Ship Date:");
+		shipLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		shipLabel.setBackground(new Color(176, 224, 230));
+		shipLabel.setForeground(new Color(139, 69, 19));
+
+		shipDateTextField = new JTextField();
+		shipDateTextField.setColumns(10);
+
+		JLabel lblUnitsSold = new JLabel("Units Sold:");
+		lblUnitsSold.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		lblUnitsSold.setBackground(new Color(176, 224, 230));
+		lblUnitsSold.setForeground(new Color(139, 69, 19));
+
+		unitsTextField = new JTextField();
+		unitsTextField.setColumns(10);
+
+		JLabel unitPriceLabel = new JLabel("Unit Price:");
+		unitPriceLabel.setBackground(new Color(176, 224, 230));
+		unitPriceLabel.setForeground(new Color(139, 69, 19));
+		unitPriceLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		unitPriceTextField = new JTextField();
+		unitPriceTextField.setColumns(10);
+
+		JLabel lblUnitCost = new JLabel("Unit Cost:");
+		lblUnitCost.setBackground(new Color(176, 224, 230));
+		lblUnitCost.setForeground(new Color(139, 69, 19));
+		lblUnitCost.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		unitCostTextField = new JTextField();
+		unitCostTextField.setColumns(10);
+
+		JLabel lblTotalRevenue = new JLabel("Total Revenue:");
+		lblTotalRevenue.setBackground(new Color(176, 224, 230));
+		lblTotalRevenue.setForeground(new Color(139, 69, 19));
+		lblTotalRevenue.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		revenueTextField = new JTextField();
+		revenueTextField.setColumns(10);
+
+		JLabel lblTotalCost = new JLabel("Total Cost:");
+		lblTotalCost.setBackground(new Color(176, 224, 230));
+		lblTotalCost.setForeground(new Color(139, 69, 19));
+		lblTotalCost.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		costTextField = new JTextField();
+		costTextField.setColumns(10);
+
+		JLabel lblTotalProfit = new JLabel("Total Profit:");
+		lblTotalProfit.setForeground(new Color(139, 69, 19));
+		lblTotalProfit.setBackground(new Color(176, 224, 230));
+		lblTotalProfit.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+
+		profitTextField = new JTextField();
+		profitTextField.setColumns(10);
+
+		JLabel lblID = new JLabel("");
+
+		JComboBox<String> comboBoxSales = new JComboBox<String>();
+		comboBoxSales.setModel(new DefaultComboBoxModel<String>(new String[] {"Online", "Offline"}));
+
+		JComboBox<String> comboBoxOrderPrio = new JComboBox<String>();
+		comboBoxOrderPrio.setModel(new DefaultComboBoxModel<String>(new String[] {"L", "M", "H", "C"}));
+
+		JComboBox<String> comboBoxItem = new JComboBox<String>();
+		comboBoxItem.setModel(new DefaultComboBoxModel<String>(new String[] {"Baby Food", "Beverages", "Cereal", "Clothes", "Cosmetics", "Fruits", "Household", "Meat", "Office Suplies", "Personal care", "Snack", "Vegetables"}));
+
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LeerCSV escribir = LeerCSV.cargarListaDatos(new File("salesReport.bin"));
+
+					String region = regionTextField.getText();
+					String country = countyTextField.getText();
+					String item = comboBoxItem.getSelectedItem().toString();
+					String salesCh = comboBoxSales.getSelectedItem().toString();
+					String orderPrio = comboBoxOrderPrio.getSelectedItem().toString();
+					String orderDate = dateTextField.getText();
+					String shipDate = shipDateTextField.getText();
+					int units = Integer.parseInt(unitsTextField.getText());
+					double unitP = Double.parseDouble(unitPriceTextField.getText());
+					double unitC = Double.parseDouble(unitCostTextField.getText());
+					double revenue = Double.parseDouble(revenueTextField.getText());
+					double cost = Double.parseDouble(costTextField.getText());
+					double profit = Double.parseDouble(profitTextField.getText());
+
+					// crear objeto para insertar
+
+					System.out.println(escribir.refMasAlta());
+					lblID.setText(escribir.refMasAlta());
+					SalesData objeto = new SalesData(region, country, item, salesCh, orderPrio, orderDate,
+							escribir.refMasAlta(), shipDate, units, unitP, unitC, revenue, cost, profit);
+					// escribir.refMasAlta()
+					System.out.println(escribir.getSize());
+					escribir.meterATabla(objeto);
+					System.out.println(escribir.getSize());
+					escribir.lecturaDatos();
+					
+					regionTextField.setText(null);
+					countyTextField.setText(null);
+					comboBoxItem.getSelectedItem().toString();
+					comboBoxSales.getSelectedItem().toString();
+					comboBoxOrderPrio.getSelectedItem().toString();
+					dateTextField.setText(null);
+					shipDateTextField.setText(null);
+					unitsTextField.setText(null);
+					unitPriceTextField.setText(null);
+					unitCostTextField.setText(null);
+					revenueTextField.setText(null);
+					costTextField.setText(null);
+					profitTextField.setText(null);
+					
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(frmAddForm, "Introduce valores validos");
+				} catch (NullPointerException e2) {
+					JOptionPane.showMessageDialog(frmAddForm, "Favor de cargar los valores");
+				}
+
+			}
+		});
+		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+		GroupLayout groupLayout = new GroupLayout(frmAddForm.getContentPane());
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addContainerGap()
+						.addComponent(lblSearchForAn, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE).addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup().addGap(21)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(lblTotalProfit, GroupLayout.PREFERRED_SIZE, 77,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(
+												profitTextField, GroupLayout.PREFERRED_SIZE, 86,
+												GroupLayout.PREFERRED_SIZE)
+										.addContainerGap())
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+												.addComponent(lblOrderId, GroupLayout.PREFERRED_SIZE, 62,
+														GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED).addComponent(lblID)
+												.addGap(161)
+												.addComponent(
+														btnAdd, GroupLayout.PREFERRED_SIZE, 98,
+														GroupLayout.PREFERRED_SIZE)
+												.addGap(164))
+										.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
+												.createParallelGroup(Alignment.LEADING)
+												.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
+														.createParallelGroup(Alignment.TRAILING)
+														.addGroup(groupLayout.createSequentialGroup()
+																.addComponent(salesLabel, GroupLayout.PREFERRED_SIZE,
+																		89, GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addComponent(comboBoxSales, GroupLayout.PREFERRED_SIZE,
+																		97, GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(ComponentPlacement.RELATED))
+														.addGroup(groupLayout.createSequentialGroup()
+																.addComponent(regionLabel, GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addComponent(regionTextField,
+																		GroupLayout.PREFERRED_SIZE, 122,
+																		GroupLayout.PREFERRED_SIZE)
+																.addGap(14)))
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+																.addGroup(groupLayout.createSequentialGroup().addGap(32)
+																		.addComponent(countryLabel,
+																				GroupLayout.PREFERRED_SIZE, 62,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(ComponentPlacement.RELATED)
+																		.addComponent(countyTextField,
+																				GroupLayout.PREFERRED_SIZE, 111,
+																				GroupLayout.PREFERRED_SIZE))
+																.addGroup(groupLayout.createSequentialGroup().addGap(18)
+																		.addComponent(lblOrderPriority,
+																				GroupLayout.PREFERRED_SIZE, 89,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(ComponentPlacement.UNRELATED)
+																		.addComponent(
+																				comboBoxOrderPrio,
+																				GroupLayout.PREFERRED_SIZE, 61,
+																				GroupLayout.PREFERRED_SIZE)))
+														.addGap(32)
+														.addGroup(groupLayout
+																.createParallelGroup(Alignment.LEADING, false)
+																.addGroup(groupLayout.createSequentialGroup()
+																		.addComponent(lblOrderDate,
+																				GroupLayout.PREFERRED_SIZE, 71,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(ComponentPlacement.RELATED)
+																		.addComponent(dateTextField,
+																				GroupLayout.PREFERRED_SIZE, 86,
+																				GroupLayout.PREFERRED_SIZE))
+																.addGroup(groupLayout.createSequentialGroup()
+																		.addComponent(
+																				lblItemType, GroupLayout.PREFERRED_SIZE,
+																				77, GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				ComponentPlacement.RELATED)
+																		.addComponent(comboBoxItem, 0,
+																				GroupLayout.DEFAULT_SIZE,
+																				Short.MAX_VALUE))))
+												.addGroup(groupLayout.createSequentialGroup()
+														.addComponent(shipLabel, GroupLayout.PREFERRED_SIZE, 77,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(shipDateTextField, GroupLayout.PREFERRED_SIZE, 98,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED, 47,
+																Short.MAX_VALUE)
+														.addComponent(lblUnitsSold, GroupLayout.PREFERRED_SIZE, 70,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(unitsTextField, GroupLayout.PREFERRED_SIZE, 111,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(18).addComponent(unitPriceLabel)
+														.addPreferredGap(ComponentPlacement.UNRELATED)
+														.addComponent(unitPriceTextField, GroupLayout.PREFERRED_SIZE,
+																86, GroupLayout.PREFERRED_SIZE))
+												.addGroup(groupLayout.createSequentialGroup()
+														.addComponent(lblUnitCost, GroupLayout.PREFERRED_SIZE, 69,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(unitCostTextField, GroupLayout.PREFERRED_SIZE, 86,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(21)
+														.addComponent(lblTotalRevenue, GroupLayout.PREFERRED_SIZE, 95,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(revenueTextField, GroupLayout.PREFERRED_SIZE, 86,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED, 62,
+																Short.MAX_VALUE)
+														.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 70,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(costTextField, GroupLayout.PREFERRED_SIZE, 86,
+																GroupLayout.PREFERRED_SIZE)))
+												.addGap(37))))));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(23).addComponent(lblSearchForAn).addGap(27)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(regionLabel, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(regionTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(countyTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(countryLabel, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblItemType, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxItem, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(41)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(3)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblOrderDate, GroupLayout.PREFERRED_SIZE, 14,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(dateTextField, GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(salesLabel, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxSales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblOrderPriority, GroupLayout.PREFERRED_SIZE, 14,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxOrderPrio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(39)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(shipDateTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(shipLabel, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(unitPriceTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(unitPriceLabel, GroupLayout.PREFERRED_SIZE, 14,
+										GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(unitsTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblUnitsSold, GroupLayout.PREFERRED_SIZE, 14,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(34)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(unitCostTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblUnitCost, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(revenueTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTotalRevenue, GroupLayout.PREFERRED_SIZE, 14,
+										GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(costTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 14,
+										GroupLayout.PREFERRED_SIZE)))
+				.addGap(36)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(3).addComponent(lblTotalProfit,
+								GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(profitTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addGap(43)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblOrderId, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblID)
+						.addComponent(btnAdd, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
+				.addGap(315)));
+		frmAddForm.getContentPane().setLayout(groupLayout);
+	}
+
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
+}

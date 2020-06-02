@@ -1,0 +1,76 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class DeleteWindow {
+
+	private JFrame frmDeleteForm;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Delete window = new Delete();
+					window.frmDeleteForm.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public DeleteWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmDeleteForm = new JFrame();
+		frmDeleteForm.setIconImage(Toolkit.getDefaultToolkit().getImage("Sales.jpg"));
+		frmDeleteForm.setTitle("DELETE FORM");
+		frmDeleteForm.getContentPane().setBackground(new Color(238, 232, 170));
+		frmDeleteForm.setBounds(100, 100, 500, 268);
+		frmDeleteForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDeleteForm.getContentPane().setLayout(null);
+		
+		JLabel deleteLabel = new JLabel("DELETE AN ITEM");
+		deleteLabel.setForeground(new Color(32, 178, 170));
+		deleteLabel.setBackground(new Color(238, 232, 170));
+		deleteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		deleteLabel.setFont(new Font("Calibri", Font.BOLD, 27));
+		deleteLabel.setBounds(0, 11, 484, 24);
+		frmDeleteForm.getContentPane().add(deleteLabel);
+		
+		JLabel lblOrderid = new JLabel("OrderID:");
+		lblOrderid.setFont(new Font("Calibri Light", Font.PLAIN, 26));
+		lblOrderid.setForeground(new Color(128, 0, 0));
+		lblOrderid.setBackground(new Color(238, 232, 170));
+		lblOrderid.setBounds(44, 97, 101, 34);
+		frmDeleteForm.getContentPane().add(lblOrderid);
+		
+		textField = new JTextField();
+		textField.setBounds(155, 107, 128, 20);
+		frmDeleteForm.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.setBounds(301, 105, 101, 24);
+		frmDeleteForm.getContentPane().add(deleteButton);
+	}
+}

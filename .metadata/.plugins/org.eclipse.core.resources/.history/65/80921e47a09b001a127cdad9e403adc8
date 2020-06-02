@@ -1,0 +1,100 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class DeleteWindow {
+
+	private JFrame frmDeleteForm;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DeleteWindow window = new DeleteWindow();
+					window.frmDeleteForm.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public DeleteWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmDeleteForm = new JFrame();
+		frmDeleteForm.setIconImage(Toolkit.getDefaultToolkit().getImage("Sales.jpg"));
+		frmDeleteForm.setTitle("DELETE FORM");
+		frmDeleteForm.getContentPane().setBackground(new Color(238, 232, 170));
+		frmDeleteForm.setBounds(100, 100, 500, 268);
+		frmDeleteForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel deleteLabel = new JLabel("DELETE AN ITEM");
+		deleteLabel.setForeground(new Color(32, 178, 170));
+		deleteLabel.setBackground(new Color(238, 232, 170));
+		deleteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		deleteLabel.setFont(new Font("Calibri", Font.BOLD, 27));
+		
+		JLabel lblOrderid = new JLabel("OrderID:");
+		lblOrderid.setHorizontalAlignment(SwingConstants.CENTER);
+		lblOrderid.setFont(new Font("Calibri Light", Font.PLAIN, 26));
+		lblOrderid.setForeground(new Color(128, 0, 0));
+		lblOrderid.setBackground(new Color(238, 232, 170));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JButton deleteButton = new JButton("Delete");
+		GroupLayout groupLayout = new GroupLayout(frmDeleteForm.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGap(36)
+					.addComponent(lblOrderid, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+					.addGap(33)
+					.addComponent(textField, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+					.addGap(29)
+					.addComponent(deleteButton, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+					.addGap(56))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(deleteLabel, GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(30)
+					.addComponent(deleteLabel)
+					.addGap(43)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblOrderid, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(3))
+		);
+		frmDeleteForm.getContentPane().setLayout(groupLayout);
+	}
+}

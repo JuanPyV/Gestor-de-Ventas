@@ -1,0 +1,90 @@
+import java.io.Serializable;
+import java.util.Date;
+
+public class SalesData implements Serializable {
+
+	private static final long serialVersionUID = -155210258862180868L;
+	private String Region, Country, Item_Type, Sales_Channel, Order_Priority, Order_ID;
+	private Date Order_Date, Ship_Date;
+	private int Units_Sold;
+	private double Unit_Price, Unit_Cost, Total_Revenue, Total_Cost, Total_Profit;
+
+	public SalesData(String Region, String Country, String Item_Type, String Sales_Channel, String Order_Priority,
+			Date Order_Date, String Order_ID, Date Ship_Date, int Units_Sold, double Unit_Price, double Unit_Cost,
+			double Total_Revenue, double Total_Cost, double Total_Profit) {
+		super();
+		this.Region = Region;
+		this.Country = Country;
+		this.Item_Type = Item_Type;
+		this.Sales_Channel = Sales_Channel;
+		this.Order_Priority = Order_Priority;
+		this.Order_Date = Order_Date;
+		this.Order_ID = Order_ID;
+		this.Ship_Date = Ship_Date;
+		this.Units_Sold = Units_Sold;
+		this.Unit_Price = Unit_Price;
+		this.Unit_Cost = Unit_Cost;
+		this.Total_Revenue = Total_Revenue;
+		this.Total_Cost = Total_Cost;
+		this.Total_Profit = Total_Profit;
+	}
+
+	public String getRegion() {
+		return Region;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public String getItem_Type() {
+		return Item_Type;
+	}
+
+	public String getSales_Channel() {
+		return Sales_Channel;
+	}
+
+	public String getOrder_Priority() {
+		return Order_Priority;
+	}
+
+	public String getOrder_ID() {
+		return Order_ID;
+	}
+
+	public Date getOrder_Date() {
+		return Order_Date;
+	}
+
+	public Date getShip_Date() {
+		return Ship_Date;
+	}
+
+	public int getUnits_Sold() {
+		return Units_Sold;
+	}
+
+	public double getUnit_Price() {
+		return Unit_Price;
+	}
+
+	public double getUnit_Cost() {
+		return Unit_Cost;
+	}
+
+	public double getTotal_Revenue() {
+		return Total_Revenue;
+	}
+
+	public double getTotal_Cost() {
+		return Total_Cost;
+	}
+
+	public double getTotal_Profit() {
+		return Total_Profit;
+	}
+
+
+
+}

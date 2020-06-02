@@ -1,0 +1,279 @@
+
+import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class LeerCSV {
+
+	private MyHashTable<String, SalesData> lista;
+	private int size;
+
+	public LeerCSV() {
+		this.lista = new MyHashTable<String, SalesData>();
+		this.size = 0;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public MyHashTable<String, SalesData> getLista() {
+		return lista;
+	}
+
+	public void lecturaDatos() {
+		int j;
+		FileOutputStream fs;
+		ObjectOutputStream os;
+		try {
+			fs = new FileOutputStream("salesReport.bin");
+			os = new ObjectOutputStream(fs);
+			for (int i = 0; i < this.lista.getTabla().length; i++) {
+				j = 0;
+				if (this.lista.getTabla()[i].size() > 0) {
+					for (int l = 0; l < this.lista.getTabla()[i].size(); l++) {
+						SalesData datitos = this.lista.getTabla()[i].get(j).valor;
+						j++;
+						os.writeObject(datitos);
+					}
+				}
+			}
+			os.close();
+			fs.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void insertarDatos(File datos) throws NumberFormatException, ParseException {
+		try {
+			Scanner inputStream = new Scanner(datos);
+			String data = inputStream.next();
+			while (inputStream.hasNext()) {
+				data = inputStream.next();
+				String[] values = data.split(",");
+				SalesData objeto = new SalesData(values[0], values[1], values[2], values[3], values[4],
+						convertDate(values[5]), values[6], convertDate(values[7]), Integer.parseInt(values[8]),
+						Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]),
+						Double.parseDouble(values[12]), Double.parseDouble(values[13]));
+				this.lista.put(objeto.getOrder_ID(), objeto);
+			}
+
+			this.size = this.lista.getSize();
+			inputStream.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Date convertDate(String date) throws ParseException {
+		String string = date;
+		DateFormat format = new SimpleDateFormat("MM/d/yyyy");
+		Date dateFormat = format.parse(string);
+		return dateFormat;
+	}
+
+	public SalesData encontrar(String Order_ID) {
+		return this.lista.get(Order_ID);
+	}
+
+	/*
+	 * busca por tipo public LinkedList<salesData> encontrarPorTipo(String tipo) {
+	 * LinkedList<salesData> arreglo = new LinkedList<salesData>(); for (int i = 0;
+	 * i < this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size()
+	 * > 0) { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { if
+	 * (this.lista.getTabla()[i].get(j).valor.getTipo().equals(tipo)) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* busca por vendedor public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorVendedor(String vendedor) { MiListaEnlazada<datosInmobiliaria>
+	 * arreglo = new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { if
+	 * (this.lista.getTabla()[i].getEn(j).valor.getVendedor().equals(vendedor)) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* busca por tipo y provincia public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorTipoProv(String tipo, String provincia) {
+	 * MiListaEnlazada<datosInmobiliaria> arreglo = new
+	 * MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { if
+	 * (this.lista.getTabla()[i].getEn(j).valor.getTipo().equals(tipo) &&
+	 * this.lista.getTabla()[i].getEn(j).valor.getProvincia().equals(provincia)) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* busca por tipo y operacion public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorTipoOpe(String tipo, String operacion) {
+	 * MiListaEnlazada<datosInmobiliaria> arreglo = new
+	 * MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { if
+	 * (this.lista.getTabla()[i].getEn(j).valor.getTipo().equals(tipo) &&
+	 * this.lista.getTabla()[i].getEn(j).valor.getOperacion().equals(operacion)) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* busca por tipo - operacion - provincia public
+	 * MiListaEnlazada<datosInmobiliaria> encontrarPorTipoOpeProv(String tipo,
+	 * String operacion, String provincia) { MiListaEnlazada<datosInmobiliaria>
+	 * arreglo = new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { if
+	 * (this.lista.getTabla()[i].getEn(j).valor.getTipo().equals(tipo) &&
+	 * this.lista.getTabla()[i].getEn(j).valor.getOperacion().equals(operacion) &&
+	 * this.lista.getTabla()[i].getEn(j).valor.getProvincia().equals(provincia)) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* bucar precio mayor public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorPrecio(int precio) { MiListaEnlazada<datosInmobiliaria> arreglo =
+	 * new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { int
+	 * precioString =
+	 * Integer.parseInt(this.lista.getTabla()[i].getEn(j).valor.getPrecio()); if
+	 * (precio <= precioString) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* bucar precio menor public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorPrecioM(int precio) { MiListaEnlazada<datosInmobiliaria> arreglo
+	 * = new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { int
+	 * precioString =
+	 * Integer.parseInt(this.lista.getTabla()[i].getEn(j).valor.getPrecio()); if
+	 * (precio > precioString) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* bucar superficie mayor public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorSuperficie(int superficie) { MiListaEnlazada<datosInmobiliaria>
+	 * arreglo = new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { int supString =
+	 * Integer.parseInt(this.lista.getTabla()[i].getEn(j).valor.getSuperficie()); if
+	 * (superficie <= supString) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 * 
+	 * /* bucar superficie menor public MiListaEnlazada<datosInmobiliaria>
+	 * encontrarPorSuperficieM(int superficie) { MiListaEnlazada<datosInmobiliaria>
+	 * arreglo = new MiListaEnlazada<datosInmobiliaria>(); for (int i = 0; i <
+	 * this.lista.getTabla().length; i++) { if (this.lista.getTabla()[i].size() > 0)
+	 * { for (int j = 0; j < this.lista.getTabla()[i].size(); j++) { int supString =
+	 * Integer.parseInt(this.lista.getTabla()[i].getEn(j).valor.getSuperficie()); if
+	 * (superficie > supString) {
+	 * arreglo.insertarFin(this.lista.getTabla()[i].getEn(j).valor); } } } } return
+	 * arreglo; }
+	 */
+
+	public LinkedList<SalesData> mostrarDatos() {
+		LinkedList<SalesData> arreglo = new LinkedList<SalesData>();
+		for (int i = 0; i < this.lista.getTabla().length; i++) {
+			if (this.lista.getTabla()[i].size() > 0) {
+				for (int j = 0; j < this.lista.getTabla()[i].size(); j++) {
+					arreglo.addLast(this.lista.getTabla()[i].get(j).valor);
+
+				}
+			}
+		}
+		return arreglo;
+	}
+
+	public void meterATabla(SalesData dato) {
+		this.size++;
+		this.lista.put(dato.getOrder_ID(), dato);
+	}
+
+	/* encontrar referencia mas alta +1 */
+	public String refMasAlta() {
+		int numerin = 0;
+		for (int i = 0; i < this.lista.getTabla().length; i++) {
+			if (this.lista.getTabla()[i].size() > 0) {
+				for (int j = 0; j < this.lista.getTabla()[i].size(); j++) {
+					int ref = Integer.parseInt(this.lista.getTabla()[i].get(j).valor.getOrder_ID());
+					if (ref > numerin) {
+						numerin = ref;
+					}
+				}
+			}
+		}
+		numerin++;
+		return "" + numerin;
+	}
+
+	public SalesData[] datosEnArreglo() {
+		SalesData[] arreglo = new SalesData[this.size];
+		int pos = 0;
+		for (int i = 0; i < this.lista.getTabla().length; i++) {
+			if (this.lista.getTabla()[i].size() > 0) {
+				for (int j = 0; j < this.lista.getTabla()[i].size(); j++) {
+					arreglo[pos] = this.lista.getTabla()[i].get(j).valor;
+					pos++;
+				}
+			}
+		}
+		return arreglo;
+	}
+
+	public static LeerCSV cargarListaDatos(File datos) {
+		try {
+			FileInputStream fs = new FileInputStream(datos);
+			ObjectInputStream os = new ObjectInputStream(fs);
+			LeerCSV sales = new LeerCSV();
+			while (fs.available() > 0) {
+				Object objeto = os.readObject();
+				SalesData inmueble = (SalesData) objeto;
+				sales.meterATabla(inmueble);
+			}
+			os.close();
+			return sales;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static void main(String[] args) throws IOException, NumberFormatException, ParseException {
+
+		LeerCSV lista = new LeerCSV();
+		lista.insertarDatos(new File("src/Sales_Records_Reducido.csv"));
+		lista.lecturaDatos();
+
+		LinkedList<SalesData> lista2 = lista.mostrarDatos();
+
+		for (int i = 0; i < lista2.size(); i++) {
+			SalesData objeto = lista2.get(i);
+			String datos = objeto.getRegion() + ", " + objeto.getCountry() + ", " + objeto.getItem_Type() + ", "
+					+ objeto.getSales_Channel() + ", " + objeto.getOrder_Priority() + ", " + objeto.getOrder_Date()
+					+ ", " + objeto.getOrder_ID() + ", " + objeto.getShip_Date() + ", " + objeto.getUnits_Sold() + ", "
+					+ objeto.getUnit_Price() + ", " + objeto.getUnit_Cost() + ", " + objeto.getTotal_Revenue() + ", "
+					+ objeto.getTotal_Cost() + ", " + objeto.getTotal_Profit();
+			System.out.println(i + ", " + datos);
+		}
+
+		// System.out.println(lista.refMasAlta());
+
+	}
+
+}

@@ -1,0 +1,138 @@
+
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
+public class MyHashTable<K, V> {
+	//Direccionamiento por encadenamiento
+	private LinkedList <NodoHT<K, V>>[] tabla;
+	private int size;
+	
+	public MyHashTable() {
+		//Valor impar o primo
+		this(11);
+	}
+	@SuppressWarnings("unchecked")
+	public MyHashTable(int legth) {
+		this.tabla = (LinkedList<NodoHT<K, V>>[]) new LinkedList[legth];
+		for(int i= 0; i<tabla.length;i++) {
+			this.tabla[i] = new LinkedList<NodoHT<K,V>>();
+		}
+		this.size= 0;
+	}
+	private void rehashing() {
+		//Crear una tabla temporal el doble del tamaño que la original, mas 1 junto con sus linked lists vacías
+		@SuppressWarnings("unchecked")
+		LinkedList <NodoHT<K, V>>[] tabla2 = (LinkedList<NodoHT<K,V>>[]) new LinkedList[2 * this.tabla.length + 1];
+		for(int i= 0; i<tabla2.length;i++) {
+			tabla2[i] = new LinkedList<NodoHT<K,V>>();
+		}
+		
+		for(int i = 0; i<tabla.length;i++) {
+			LinkedList<NodoHT<K, V>> lista = this.tabla[i];
+			//Para cada nodo de la lista, copiar el nodo de la tabla original a la temporal
+			for (NodoHT<K,V> nodo:lista) {
+				int pos = Math.abs(nodo.llave.hashCode() % tabla2.length);
+				tabla2[pos].addFirst(new NodoHT<>(nodo.llave, nodo.valor));
+			}
+		} 
+		//Apuntar 
+		this.tabla = tabla2;
+		System.out.println("Se hizo un rehashing");
+	}
+	
+	//Validar si la tabla no ha excedido el factor de carga
+	//Factor de carga máximo = 0.75
+	//Factor de carga es factor= numero de items/ tamaño de tabla
+	public void put(K llave, V valor) {
+		//Si el factor de carga es mayor al permitido  -> rehashing
+		if((double)this.size / this.tabla.length > 0.75) {
+			this.rehashing();
+			
+		}
+		int pos = Math.abs(llave.hashCode() % this.tabla.length);
+		this.tabla[pos].addFirst(new NodoHT<>(llave, valor));
+		this.size++;
+			
+		
+	} 
+	
+	public V get(K llave) {
+		int pos = Math.abs(llave.hashCode() % this.tabla.length);
+		LinkedList<NodoHT<K, V>> lista = this.tabla[pos];
+		//Para cada nodo de la lista
+		for (NodoHT<K,V> nodo:lista) {
+			if(nodo.llave.equals(llave)) {
+				return nodo.valor;
+			}
+		}
+		throw new NoSuchElementException("No se encontró la llave "+llave+" en la tabla");
+	}
+	
+	public V delete(K llave) {
+		int pos = Math.abs(llave.hashCode() % this.tabla.length);
+		LinkedList<NodoHT<K, V>> lista= this.tabla[pos];
+		//Para cada nodo de la lista
+		for (NodoHT<K,V> nodo:lista) {
+			if(nodo.llave.equals(llave)) {
+				V valorcillo = nodo.valor;
+				lista.remove(nodo);
+				this.size--;
+				return valorcillo;
+			}
+		}
+		throw new NoSuchElementException("No se encontró la llave "+ llave +" en la tabla");
+	}
+	
+	public boolean isEmpty() {
+		return this.size == 0;
+	}
+	
+	public int getSize() {
+		return this.size;
+	}
+	//Regresa si la llave pasada como parámetro está en la hastable o no
+	public boolean containskey(K llave) {
+		int pos = Math.abs(llave.hashCode() % this.tabla.length);
+		LinkedList<NodoHT<K, V>> lista = this.tabla[pos];
+		for(NodoHT<K, V> nodo : lista) {
+			if(nodo.llave.equals(llave)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public LinkedList<NodoHT<K, V>>[] getTabla() {
+		return tabla;
+	}
+}
+
+class NodoHT<K, V>{
+	K llave;
+	V valor;
+	
+	public NodoHT(K llave, V valor) {
+		this.llave = llave;
+		this.valor = valor;
+	}
+
+	public K getLlave() {
+		return llave;
+	}
+
+	public V getValor() {
+		return valor;
+	}
+
+	public void setLlave(K llave) {
+		this.llave = llave;
+	}
+
+	public void setValor(V valor) {
+		this.valor = valor;
+	}
+	public String toString() {
+		return this.valor + " "+this.llave;
+		// return this.valor.toString;
+	}
+}

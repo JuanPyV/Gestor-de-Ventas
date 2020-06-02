@@ -1,0 +1,452 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+
+public class SearchWindow {
+
+	private JFrame frmSearchForm;
+	private JTextField regionTextField;
+	private JTextField countyTextField;
+	private JTextField textField;
+	private JTextField salesTextField;
+	private JTextField orderTextField;
+	private JTextField dateTextField;
+	private JTextField orderIDTextField;
+	private JTextField hipDateTextField;
+	private JTextField unitsTextField;
+	/**
+	 * @wbp.nonvisual location=501,-31
+	 */
+	private final JLabel label_3 = new JLabel("New label");
+	private JTextField unitPriceTextField;
+	private JTextField unitCostTextField;
+	private JTextField revenueTextField;
+	private JTextField costTextField;
+	private JTextField profitTextField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SearchWindow window = new SearchWindow();
+					window.frmSearchForm.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public SearchWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmSearchForm = new JFrame();
+		frmSearchForm.getContentPane().setBackground(new Color(176, 224, 230));
+		frmSearchForm.setIconImage(Toolkit.getDefaultToolkit().getImage("Sales.jpg"));
+		frmSearchForm.setTitle("SEARCH FORM");
+		frmSearchForm.setBounds(100, 100, 597, 711);
+		frmSearchForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel lblSearchForAn = new JLabel("SEARCH FOR AN ITEM");
+		lblSearchForAn.setBackground(new Color(176, 224, 230));
+		lblSearchForAn.setForeground(new Color(139, 69, 19));
+		lblSearchForAn.setFont(new Font("Calibri", Font.BOLD, 25));
+		lblSearchForAn.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel regionLabel = new JLabel("Region:");
+		regionLabel.setForeground(new Color(139, 69, 19));
+		regionLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		regionLabel.setBackground(new Color(176, 224, 230));
+		
+		regionTextField = new JTextField();
+		regionTextField.setColumns(10);
+		
+		JLabel countryLabel = new JLabel("Country:");
+		countryLabel.setForeground(new Color(139, 69, 19));
+		countryLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		countryLabel.setBackground(new Color(176, 224, 230));
+		
+		countyTextField = new JTextField();
+		countyTextField.setColumns(10);
+		
+		JLabel lblItemType = new JLabel("Item Type:");
+		lblItemType.setForeground(new Color(139, 69, 19));
+		lblItemType.setBackground(new Color(176, 224, 230));
+		lblItemType.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		
+		JLabel label = new JLabel("-------------------------------------------------------------------------------------------------------------------------------------------");
+		
+		JLabel salesLabel = new JLabel("Sales Channel:");
+		salesLabel.setForeground(new Color(139, 69, 19));
+		salesLabel.setBackground(new Color(176, 224, 230));
+		salesLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		salesTextField = new JTextField();
+		salesTextField.setColumns(10);
+		
+		JLabel lblOrderPriority = new JLabel("Order Priority:");
+		lblOrderPriority.setForeground(new Color(139, 69, 19));
+		lblOrderPriority.setBackground(new Color(176, 224, 230));
+		lblOrderPriority.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		orderTextField = new JTextField();
+		orderTextField.setColumns(10);
+		
+		JLabel lblOrderDate = new JLabel("Order Date:");
+		lblOrderDate.setForeground(new Color(139, 69, 19));
+		lblOrderDate.setBackground(new Color(176, 224, 230));
+		lblOrderDate.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		dateTextField = new JTextField();
+		dateTextField.setColumns(10);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		
+		JLabel label_1 = new JLabel("--------------------------------------------------------------------------------------------------------------------------------------------");
+		
+		JLabel lblOrderId = new JLabel("Order ID:");
+		lblOrderId.setForeground(new Color(139, 69, 19));
+		lblOrderId.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		lblOrderId.setBackground(new Color(176, 224, 230));
+		
+		orderIDTextField = new JTextField();
+		orderIDTextField.setColumns(10);
+		
+		JLabel shipLabel = new JLabel("Ship Date:");
+		shipLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		shipLabel.setBackground(new Color(176, 224, 230));
+		shipLabel.setForeground(new Color(139, 69, 19));
+		
+		hipDateTextField = new JTextField();
+		hipDateTextField.setColumns(10);
+		
+		JLabel lblUnitsSold = new JLabel("Units Sold:");
+		lblUnitsSold.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		lblUnitsSold.setBackground(new Color(176, 224, 230));
+		lblUnitsSold.setForeground(new Color(139, 69, 19));
+		
+		unitsTextField = new JTextField();
+		unitsTextField.setColumns(10);
+		
+		JButton btnNewButton_6 = new JButton("New button");
+		
+		JButton btnNewButton_7 = new JButton("New button");
+		
+		JButton btnNewButton_8 = new JButton("New button");
+		
+		JLabel label_2 = new JLabel("--------------------------------------------------------------------------------------------------------------------------------------------");
+		
+		JLabel unitPriceLabel = new JLabel("Unit Price:");
+		unitPriceLabel.setBackground(new Color(176, 224, 230));
+		unitPriceLabel.setForeground(new Color(139, 69, 19));
+		unitPriceLabel.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		unitPriceTextField = new JTextField();
+		unitPriceTextField.setColumns(10);
+		
+		JLabel lblUnitCost = new JLabel("Unit Cost:");
+		lblUnitCost.setBackground(new Color(176, 224, 230));
+		lblUnitCost.setForeground(new Color(139, 69, 19));
+		lblUnitCost.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		unitCostTextField = new JTextField();
+		unitCostTextField.setColumns(10);
+		
+		JLabel lblTotalRevenue = new JLabel("Total Revenue:");
+		lblTotalRevenue.setBackground(new Color(176, 224, 230));
+		lblTotalRevenue.setForeground(new Color(139, 69, 19));
+		lblTotalRevenue.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		revenueTextField = new JTextField();
+		revenueTextField.setColumns(10);
+		
+		JButton btnNewButton_9 = new JButton("New button");
+		
+		JButton btnNewButton_10 = new JButton("New button");
+		
+		JButton btnNewButton_11 = new JButton("New button");
+		
+		JLabel label_4 = new JLabel("--------------------------------------------------------------------------------------------------------------------------------------------");
+		
+		JLabel lblTotalCost = new JLabel("Total Cost:");
+		lblTotalCost.setBackground(new Color(176, 224, 230));
+		lblTotalCost.setForeground(new Color(139, 69, 19));
+		lblTotalCost.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		costTextField = new JTextField();
+		costTextField.setColumns(10);
+		
+		JLabel lblTotalProfit = new JLabel("Total Profit:");
+		lblTotalProfit.setForeground(new Color(139, 69, 19));
+		lblTotalProfit.setBackground(new Color(176, 224, 230));
+		lblTotalProfit.setFont(new Font("Calibri Light", Font.PLAIN, 15));
+		
+		profitTextField = new JTextField();
+		profitTextField.setColumns(10);
+		
+		JButton btnNewButton_12 = new JButton("New button");
+		
+		JButton btnNewButton_13 = new JButton("New button");
+		GroupLayout groupLayout = new GroupLayout(frmSearchForm.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblSearchForAn, GroupLayout.PREFERRED_SIZE, 562, GroupLayout.PREFERRED_SIZE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(49)
+							.addComponent(regionTextField, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+						.addComponent(regionLabel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(58)
+							.addComponent(countyTextField, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
+						.addComponent(countryLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(71)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblItemType, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(btnNewButton)
+					.addGap(103)
+					.addComponent(btnNewButton_1)
+					.addGap(90)
+					.addComponent(btnNewButton_2))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 561, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(salesLabel, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addGap(3)
+					.addComponent(salesTextField, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(lblOrderPriority, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addComponent(orderTextField, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(lblOrderDate, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(3)
+					.addComponent(dateTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(btnNewButton_3)
+					.addGap(103)
+					.addComponent(btnNewButton_4)
+					.addGap(108)
+					.addComponent(btnNewButton_5))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 561, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblOrderId, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(60)
+							.addComponent(orderIDTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+					.addGap(16)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(shipLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(69)
+							.addComponent(hipDateTextField, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)))
+					.addGap(10)
+					.addComponent(lblUnitsSold, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(unitsTextField, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(btnNewButton_6)
+					.addGap(73)
+					.addComponent(btnNewButton_7)
+					.addGap(88)
+					.addComponent(btnNewButton_8))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 561, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(unitPriceLabel)
+					.addGap(8)
+					.addComponent(unitPriceTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(14)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(62)
+							.addComponent(unitCostTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblUnitCost, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+					.addGap(15)
+					.addComponent(lblTotalRevenue, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(revenueTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(btnNewButton_9)
+					.addGap(73)
+					.addComponent(btnNewButton_10)
+					.addGap(88)
+					.addComponent(btnNewButton_11))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 561, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addComponent(costTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(17)
+					.addComponent(lblTotalProfit, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addComponent(profitTextField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addComponent(btnNewButton_12)
+					.addGap(81)
+					.addComponent(btnNewButton_13))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(lblSearchForAn)
+					.addGap(20)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(regionTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(regionLabel, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+						.addComponent(countyTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(countryLabel, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(lblItemType, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton_1)
+						.addComponent(btnNewButton_2))
+					.addGap(11)
+					.addComponent(label)
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(salesLabel, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(salesTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblOrderPriority, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(orderTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblOrderDate, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(dateTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_3)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(btnNewButton_4))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(btnNewButton_5)))
+					.addGap(8)
+					.addComponent(label_1)
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblOrderId, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(orderIDTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(shipLabel, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(hipDateTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblUnitsSold, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(unitsTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_6)
+						.addComponent(btnNewButton_7)
+						.addComponent(btnNewButton_8))
+					.addGap(11)
+					.addComponent(label_2)
+					.addGap(5)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(unitPriceLabel, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(unitPriceTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(unitCostTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblUnitCost, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblTotalRevenue, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(revenueTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_9)
+						.addComponent(btnNewButton_10)
+						.addComponent(btnNewButton_11))
+					.addGap(11)
+					.addComponent(label_4)
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblTotalCost, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(costTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblTotalProfit, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+						.addComponent(profitTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_12)
+						.addComponent(btnNewButton_13)))
+		);
+		frmSearchForm.getContentPane().setLayout(groupLayout);
+	}
+}
